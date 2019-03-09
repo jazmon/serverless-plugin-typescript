@@ -8,10 +8,10 @@
     "README.md"
   ],
   "scripts": {
-    "prepublish": "npm run build",
-    "precommit": "npm run test",
+    "prepublish": "yarn run build",
+    "precommit": "yarn run test",
     "build": "rm -rf dist && tsc",
-    "pretest": "npm run lint",
+    "pretest": "yarn run lint",
     "test": "jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
@@ -31,8 +31,11 @@
     "@types/lodash": "4.14.122",
     "jest": "24.3.1",
     "mock-fs": "4.8.0",
+    "prettier": "^1.16.4",
     "ts-jest": "24.0.0",
-    "tslint": "5.13.1"
+    "tslint": "5.13.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
     "fs-extra": "^7.0.1",
@@ -42,13 +45,16 @@
   },
   "jest": {
     "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
-      "tsx",
+      "json",
       "js"
-    ]
+    ],
+    "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/"],
+    "testEnvironment": "node",
+    "verbose": false
   }
 }

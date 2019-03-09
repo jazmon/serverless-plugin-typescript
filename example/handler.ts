@@ -1,13 +1,12 @@
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 
 // modern module syntax
 export async function hello(event, context, callback) {
-
   // dependencies work as expected
-  console.log(_.VERSION)
+  console.log(_.VERSION);
 
   // async/await also works out of the box
-  await new Promise((resolve, reject) => setTimeout(resolve, 500))
+  await new Promise((resolve, reject) => setTimeout(resolve, 500));
 
   const response = {
     statusCode: 200,
