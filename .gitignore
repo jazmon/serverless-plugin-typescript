@@ -1,6 +1,7 @@
 dist
-# Created by https://www.gitignore.io/api/osx,node,linux,windows,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=osx,node,linux,windows,visualstudiocode
+
+# Created by https://www.gitignore.io/api/osx,node,linux,windows,serverless,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=osx,node,linux,windows,serverless,visualstudiocode
 
 ### Linux ###
 *~
@@ -127,6 +128,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### Serverless ###
+# Ignore build directory
+.serverless
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -163,4 +168,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/osx,node,linux,windows,visualstudiocode
+# End of https://www.gitignore.io/api/osx,node,linux,windows,serverless,visualstudiocode

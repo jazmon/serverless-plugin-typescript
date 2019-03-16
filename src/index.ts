@@ -5,7 +5,7 @@ import globby from 'globby';
 // import * as _ from 'lodash';
 
 import {
-  ServerlessFunction,
+  // ServerlessFunction,
   ServerlessInstance,
   ServerlessOptions,
 } from './types';
