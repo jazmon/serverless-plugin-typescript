@@ -3,9 +3,11 @@ import * as fs from 'fs-extra';
 import { last } from 'lodash';
 import * as path from 'path';
 import * as ts from 'typescript';
-import { ServerlessFunction } from './types';
+import * as Serverless from 'serverless';
+// import {Service as ServerlessService} from 'serverless/classes/Service'
+// import { ServerlessFunction, ServerlessProvider } from './types';
 
-export function makeDefaultTypescriptConfig() {
+export function makeDefaultTypescriptConfig(): ts.CompilerOptions {
   const defaultTypescriptConfig: ts.CompilerOptions = {
     preserveConstEnums: true,
     strictNullChecks: true,
@@ -18,11 +20,10 @@ export function makeDefaultTypescriptConfig() {
 
   return defaultTypescriptConfig;
 }
-
 export function extractFileNames(
   cwd: string,
-  provider: string,
-  functions?: { [key: string]: ServerlessFunction },
+  providerName: string,
+  functions?: { [key: string]: Serverless.FunctionDefinition },
 ): string[] {
   // The Google provider will use the entrypoint not from the definition of the
   // handler function, but instead from the package.json:main field, or via a
@@ -30,7 +31,7 @@ export function extractFileNames(
   // that we already read the tsconfig.json file, by inspecting the current
   // working directory. If the packageFile does not contain a valid main, then
   // it instead selects the index.js file.
-  if (provider === 'google') {
+  if (providerName === 'google') {
     const packageFilePath = path.join(cwd, 'package.json');
     if (fs.existsSync(packageFilePath)) {
       // Load in the package.json file.

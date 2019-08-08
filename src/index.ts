@@ -3,12 +3,13 @@ import * as path from 'path';
 import { uniq } from 'lodash';
 import globby from 'globby';
 // import * as _ from 'lodash';
+import * as Serverless from 'serverless';
 
-import {
-  // ServerlessFunction,
-  ServerlessInstance,
-  ServerlessOptions,
-} from './types';
+// import {
+//   // ServerlessFunction,
+//   ServerlessInstance,
+//   ServerlessOptions,
+// } from './types';
 import * as typescript from './typescript';
 
 import { watchFiles } from './watchFiles';
@@ -36,14 +37,14 @@ export class TypeScriptPlugin {
     );
   }
 
-  public serverless: ServerlessInstance;
-  public options: ServerlessOptions;
+  public serverless: Serverless;
+  public options: Serverless.Options;
   // public commands: { [key: string]: any };
   public hooks: { [key: string]: Function };
   private originalServicePath: null | string = null;
   private isWatching: boolean = false;
 
-  constructor(serverless: ServerlessInstance, options: ServerlessOptions) {
+  constructor(serverless: Serverless, options: Serverless.Options) {
     this.serverless = serverless;
     this.options = options;
 
